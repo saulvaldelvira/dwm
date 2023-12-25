@@ -63,6 +63,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+ #include <X11/XF86keysym.h>
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -79,6 +81,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+        { MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },
@@ -101,6 +104,12 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+        // Brightness/Volume Function Keys
+        { 0,    XF86XK_MonBrightnessDown,          spawn,       SHCMD("brightnessctl s +5%") },
+        { 0,    XF86XK_MonBrightnessUp,            spawn,       SHCMD("brightnessctl s 5%-") },
+        { 0,    XF86XK_AudioRaiseVolume,           spawn,       SHCMD("amixer set Master 5%+ ; dwm-status") },
+        { 0,    XF86XK_AudioLowerVolume,           spawn,       SHCMD("amixer set Master 5%- ; dwm-status") },
+        { 0,    XF86XK_AudioMute,                  spawn,       SHCMD("amixer set Master toggle ; dwm-status") },
 };
 
 /* button definitions */
