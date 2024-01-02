@@ -69,7 +69,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+/*	{ MODKEY,                       XK_b,      togglebar,      {0} }, */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -93,8 +93,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("slock") },
-        { 0,                            XK_Print,  spawn,          SHCMD("screenshot") },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          {.v = (const char*[]){"slock", NULL}} },
+        { 0,                            XK_Print,  spawn,          {.v = (const char*[]){"screenshot", NULL}} },
+        { MODKEY,                       XK_b,      spawn,          {.v = (const char*[]){"bookmark", NULL}} },
+        { MODKEY|ShiftMask,             XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-a", NULL}} },
+        { MODKEY|ControlMask,           XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-n", NULL}} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -104,10 +107,10 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ControlMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ControlMask,             XK_q,      quit,        {0} },
         // Brightness/Volume Function Keys
-        { 0,    XF86XK_MonBrightnessDown,          spawn,       SHCMD("brightnessctl s +5%") },
-        { 0,    XF86XK_MonBrightnessUp,            spawn,       SHCMD("brightnessctl s 5%-") },
+        { 0,    XF86XK_MonBrightnessDown,          spawn,       {.v = (const char*[]){"brightnessctl", "s", "+5%", NULL}} },
+        { 0,    XF86XK_MonBrightnessUp,            spawn,       {.v = (const char*[]){"brightnessctl", "s", "5%-", NULL}} },
         { 0,    XF86XK_AudioRaiseVolume,           spawn,       SHCMD("amixer set Master 5%+ ; dwm-status") },
         { 0,    XF86XK_AudioLowerVolume,           spawn,       SHCMD("amixer set Master 5%- ; dwm-status") },
         { 0,    XF86XK_AudioMute,                  spawn,       SHCMD("amixer set Master toggle ; dwm-status") },
