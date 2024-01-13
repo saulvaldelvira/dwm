@@ -98,6 +98,7 @@ static const Key keys[] = {
         { MODKEY,                       XK_b,      spawn,          {.v = (const char*[]){"bookmark", NULL}} },
         { MODKEY|ShiftMask,             XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-a", NULL}} },
         { MODKEY|ControlMask,           XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-n", NULL}} },
+        { MODKEY|ShiftMask|ControlMask, XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-s", NULL}} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
