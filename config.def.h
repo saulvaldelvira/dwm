@@ -70,7 +70,6 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){"tabbed", "-c", "st", "-w", NULL}} },
-/*	{ MODKEY,                       XK_b,      togglebar,      {0} }, */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -86,6 +85,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
+	{ MODKEY|ControlMask,           XK_f,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = (const char*[]){"wallpaper", NULL}} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -99,8 +99,8 @@ static const Key keys[] = {
         { 0,                            XK_Print,  spawn,          {.v = (const char*[]){"screenshot", NULL}} },
         { MODKEY,                       XK_b,      spawn,          {.v = (const char*[]){"bookmark", NULL}} },
         { MODKEY|ShiftMask,             XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-a", NULL}} },
-        { MODKEY|ControlMask,           XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-n", NULL}} },
-        { MODKEY|ShiftMask|ControlMask, XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-s", NULL}} },
+        { MODKEY|ControlMask,           XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-s", NULL}} },
+        { MODKEY|ShiftMask|ControlMask, XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-n", NULL}} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
