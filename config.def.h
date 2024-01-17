@@ -2,6 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const Gap default_gap        = {.isgap = 1, .realgap = 10, .gappx = 10};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -95,12 +96,16 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          {.v = (const char*[]){"slock", NULL}} },
+        { MODKEY|ShiftMask,             XK_x,      spawn,          {.v = (const char*[]){"slock", NULL}} },
         { 0,                            XK_Print,  spawn,          {.v = (const char*[]){"screenshot", NULL}} },
         { MODKEY,                       XK_b,      spawn,          {.v = (const char*[]){"bookmark", NULL}} },
         { MODKEY|ShiftMask,             XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-a", NULL}} },
         { MODKEY|ControlMask,           XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-s", NULL}} },
         { MODKEY|ShiftMask|ControlMask, XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-n", NULL}} },
+	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
+	{ MODKEY,                       XK_plus,   setgaps,        {.i = +5 } },
+        { MODKEY|ControlMask,           XK_period, setgaps,        {.i = GAP_RESET } },
+	{ MODKEY|ShiftMask,             XK_period, setgaps,        {.i = GAP_TOGGLE} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -116,6 +121,7 @@ static const Key keys[] = {
         { 0,    XF86XK_MonBrightnessUp,            spawn,       {.v = (const char*[]){"brightnessctl", "s", "5%-", NULL}} },
         { 0,    XF86XK_AudioRaiseVolume,           spawn,       SHCMD("amixer set Master 5%+ ; dwm-status") },
         { 0,    XF86XK_AudioLowerVolume,           spawn,       SHCMD("amixer set Master 5%- ; dwm-status") },
+
         { 0,    XF86XK_AudioMute,                  spawn,       SHCMD("amixer set Master toggle ; dwm-status") },
 };
 
