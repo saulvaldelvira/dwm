@@ -51,8 +51,35 @@ fibonacci(Monitor *mon, int s) {
 				nw = mon->ww - nw;
 			i++;
 		}
-
-		resize(c, nx + mon->gap->gappx, ny + mon->gap->gappx, nw - 2 * c->bw - mon->gap->gappx * 2, nh - 2 * c->bw - mon->gap->gappx * 2, False);
+                int lg, rg, ug, dg;
+                lg = rg = ug = dg = mon->gap->gappx / 2;
+                if (i == 1){
+                        lg *= 2;
+                        ug *= 2;
+                        dg *= 2;
+                        if (n == 1)
+                                rg *= 2;
+                }else if (i == 2){
+                        ug *= 2;
+                        rg *= 2;
+                        if (n == 2)
+                                dg *= 2;
+                }
+                if (i == 3){
+                        rg *= 2;
+                }
+                if (i == 3 || i == 4){
+                        dg *= 2;
+                }
+                if (s){
+                        /* Hack so the dwindle layout looks better with gaps.
+                           I don't use it, so I won't bother fixing it */
+                        lg = rg = ug = dg = mon->gap->gappx;
+                }
+		resize(c, nx + lg,
+                          ny + ug,
+                          nw - 2 * c->bw - (lg + rg),
+                          nh - 2 * c->bw - (ug + dg), False);
 	}
 }
 
