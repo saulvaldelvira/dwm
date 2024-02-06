@@ -228,6 +228,7 @@ static void setfullscreen(Client *c, int fullscreen);
 static void fullscreen(const Arg *arg);
 static void setgaps(const Arg *arg);
 static void setlayout(const Arg *arg);
+static void shiftlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
@@ -1595,6 +1596,21 @@ setlayout(const Arg *arg)
 		arrange(selmon);
 	else
 		drawbar(selmon);
+}
+
+void shiftlayout(const Arg *arg)
+{
+	if (!arg){
+		selmon->sellt ^= 1;
+                return;
+        }
+        static int i = 0;
+        static int n = sizeof(layouts) / sizeof(layouts[0]) - 1;
+        if (arg->i == 1)
+                i = i < n ? i + 1 : 0;
+        else
+                i = i > 0 ? i - 1 : n;
+        setlayout(&(const Arg){.v = &layouts[i]});
 }
 
 /* arg > 1.0 will set mfact absolutely */
