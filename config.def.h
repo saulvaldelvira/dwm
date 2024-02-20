@@ -73,6 +73,7 @@ ResourcePref resources[] = {
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ControlMask,           XK_p,      spawn,          {.v = (const char*[]){"password", NULL}} },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){"tabbed", "-c", "st", "-w", NULL}} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
