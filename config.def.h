@@ -106,6 +106,7 @@ static const Key keys[] = {
         { MODKEY|ShiftMask,             XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-a", NULL}} },
         { MODKEY|ControlMask,           XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-c", NULL}} },
         { MODKEY|ShiftMask|ControlMask, XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-n", NULL}} },
+        { MODKEY|ShiftMask,             XK_p,      spawn,          {.v = (const char*[]){"pdfs", NULL}} },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY,                       XK_plus,   setgaps,        {.i = +5 } },
         { MODKEY|ControlMask,           XK_period, setgaps,        {.i = GAP_RESET } },
@@ -119,7 +120,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ControlMask,             XK_q,      quit,        {0} },
+	{ MODKEY|ControlMask,           XK_q,      quit,           {0} },
         // Application Shortcuts
         shortcut(XK_m, "cmus"),
         shortcut(XK_f, "lf"),
