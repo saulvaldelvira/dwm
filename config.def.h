@@ -70,6 +70,8 @@ ResourcePref resources[] = {
 
  #include <X11/XF86keysym.h>
 
+#define shortcut(key, ...) { MODKEY, key, spawn,  {.v = (const char*[]){"st", "-e", __VA_ARGS__, NULL}} }
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -118,6 +120,12 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ControlMask,             XK_q,      quit,        {0} },
+        // Application Shortcuts
+        shortcut(XK_m, "cmus"),
+        shortcut(XK_f, "lf"),
+        shortcut(XK_v, "nvim"),
+        shortcut(XK_c, "cal"),
+        shortcut(XK_e, "neomutt"),
         // Brightness/Volume Function Keys
         { 0,    XF86XK_MonBrightnessDown,          spawn,       {.v = (const char*[]){"brightnessctl", "s", "+5%", NULL}} },
         { 0,    XF86XK_MonBrightnessUp,            spawn,       {.v = (const char*[]){"brightnessctl", "s", "5%-", NULL}} },
