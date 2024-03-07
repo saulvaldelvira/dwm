@@ -123,7 +123,7 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_q,      quit,           {0} },
         // Application Shortcuts
         shortcut(XK_m, "cmus"),
-        shortcut(XK_f, "lf"),
+        shortcut(XK_f, "vifm"),
         shortcut(XK_v, "nvim"),
         shortcut(XK_c, "cal"),
         shortcut(XK_e, "neomutt"),
