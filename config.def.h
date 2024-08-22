@@ -72,6 +72,8 @@ ResourcePref resources[] = {
 
 #define shortcut(key, ...) { MODKEY, key, spawn,  {.v = (const char*[]){"st", "-e", __VA_ARGS__, NULL}} }
 
+#define command(...) {.v = (const char*[]){ __VA_ARGS__ , NULL}} }
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -106,7 +108,8 @@ static const Key keys[] = {
         { MODKEY|ShiftMask,             XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-a", NULL}} },
         { MODKEY|ControlMask,           XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-c", NULL}} },
         { MODKEY|ShiftMask|ControlMask, XK_b,      spawn,          {.v = (const char*[]){"bookmark", "-n", NULL}} },
-        { MODKEY|ShiftMask,             XK_p,      spawn,          {.v = (const char*[]){"pdfs", NULL}} },
+        { MODKEY|ShiftMask,             XK_p,      spawn,          command("pdfs"),
+        { MODKEY|ControlMask,           XK_v,      spawn,          command("peli"),
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY,                       XK_plus,   setgaps,        {.i = +5 } },
         { MODKEY|ControlMask,           XK_period, setgaps,        {.i = GAP_RESET } },
