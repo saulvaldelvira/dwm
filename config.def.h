@@ -70,7 +70,9 @@ ResourcePref resources[] = {
 
  #include <X11/XF86keysym.h>
 
-#define shortcut(key, ...) { MODKEY, key, spawn,  {.v = (const char*[]){"st", "-e", __VA_ARGS__, NULL}} }
+#define shortcut_mod(mod, key, ...) { mod, key, spawn,  {.v = (const char*[]){"st", "-e", __VA_ARGS__, NULL}} }
+
+#define shortcut(key, ...) shortcut_mod(MODKEY, key, __VA_ARGS__)
 
 #define command(...) {.v = (const char*[]){ __VA_ARGS__ , NULL}} }
 
@@ -130,6 +132,7 @@ static const Key keys[] = {
         shortcut(XK_v, "nvim"),
         shortcut(XK_c, "cal"),
         shortcut(XK_e, "neomutt"),
+        shortcut_mod(MODKEY | ControlMask, XK_t, "htop"),
         // Brightness/Volume Function Keys
         { 0,    XF86XK_MonBrightnessDown,          spawn,       {.v = (const char*[]){"brightnessctl", "s", "+5%", NULL}} },
         { 0,    XF86XK_MonBrightnessUp,            spawn,       {.v = (const char*[]){"brightnessctl", "s", "5%-", NULL}} },
