@@ -96,6 +96,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
 	{ MODKEY|ControlMask,           XK_f,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = (const char*[]){"wallpaper", NULL}} },
+	{ MODKEY,                       XK_w,      spawn,          {.v = (const char*[]){"librewolf", NULL}} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
