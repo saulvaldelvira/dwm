@@ -130,9 +130,9 @@ static const Key keys[] = {
         // Application Shortcuts
         shortcut(XK_m, "cmus"),
         shortcut(XK_f, "vifm"),
-        shortcut(XK_v, "nvim"),
         shortcut(XK_c, "cal"),
         shortcut(XK_e, "neomutt"),
+        shortcut(XK_i, "nmtui"),
         shortcut_mod(MODKEY | ControlMask, XK_t, "htop"),
         // Brightness/Volume Function Keys
         { 0,    XF86XK_MonBrightnessDown,          spawn,       {.v = (const char*[]){"brightnessctl", "s", "+5%", NULL}} },
