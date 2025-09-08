@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static unsigned int borderpx  = 1;        /* border pixel of windows */
 static Gap default_gap        = {.isgap = 1, .realgap = 10, .gappx = 10};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -13,10 +13,14 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static char sel_bgcolor[30] = "#005577";
+static char sel_fgcolor[30] = "#eeeeee";
+static char sel_border[30] = "#005577";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { sel_fgcolor, sel_bgcolor,  sel_border },
 };
 
 /* tagging */
@@ -66,6 +70,10 @@ static const char *termcmd[]  = { "st", NULL };
 
 ResourcePref resources[] = {
         { "gappx", INTEGER, &default_gap.gappx },
+        { "bgcolor", STRING, sel_bgcolor },
+        { "fgcolor", STRING, sel_fgcolor },
+        { "bordercolor", STRING, sel_border },
+        { "borderpx", INTEGER, &borderpx },
 };
 
  #include <X11/XF86keysym.h>
