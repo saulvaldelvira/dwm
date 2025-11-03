@@ -86,6 +86,8 @@ ResourcePref resources[] = {
 
  #include <X11/XF86keysym.h>
 
+#define SLSTATUS_SIGNAL(num) "; pkill slstatus -SIGRTMIN+" #num
+
 #define shortcut_mod(mod, key, ...) { mod, key, spawn,  {.v = (const char*[]){"st", "-e", __VA_ARGS__, NULL}} }
 
 #define shortcut(key, ...) shortcut_mod(MODKEY, key, __VA_ARGS__)
@@ -155,10 +157,10 @@ static const Key keys[] = {
         // Brightness/Volume Function Keys
         { 0,    XF86XK_MonBrightnessDown,          spawn,       {.v = (const char*[]){"brightnessctl", "s", "+5%", NULL}} },
         { 0,    XF86XK_MonBrightnessUp,            spawn,       {.v = (const char*[]){"brightnessctl", "s", "5%-", NULL}} },
-        { 0,    XF86XK_AudioRaiseVolume,           spawn,       SHCMD("amixer set Master 5%+ ; dwm-status") },
-        { 0,    XF86XK_AudioLowerVolume,           spawn,       SHCMD("amixer set Master 5%- ; dwm-status") },
+        { 0,    XF86XK_AudioRaiseVolume,           spawn,       SHCMD("amixer set Master 5%+" SLSTATUS_SIGNAL(1)) },
+        { 0,    XF86XK_AudioLowerVolume,           spawn,       SHCMD("amixer set Master 5%-" SLSTATUS_SIGNAL(1)) },
 
-        { 0,    XF86XK_AudioMute,                  spawn,       SHCMD("amixer set Master toggle ; dwm-status") },
+        { 0,    XF86XK_AudioMute,                  spawn,       SHCMD("amixer set Master toggle" SLSTATUS_SIGNAL(1)) },
 };
 
 /* button definitions */
