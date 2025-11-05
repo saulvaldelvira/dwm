@@ -136,6 +136,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_plus,   setgaps,        {.i = +5 } },
         { MODKEY|ControlMask,           XK_period, setgaps,        {.i = GAP_RESET } },
 	{ MODKEY|ShiftMask,             XK_period, setgaps,        {.i = GAP_TOGGLE} },
+        { MODKEY,                       XK_F5,     spawn,          {.v = (const char*[]){"pkill", "slstatus", "-SIGUSR1", NULL}} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
